@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="flex-force.adapter-admin-rest-api" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.adapter-admin-rest-api.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.adapter-admin-rest-api.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.adapter-user-rest-api" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.adapter-user-rest-api.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.adapter-user-rest-api.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-contracts" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-contracts.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-contracts.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-services" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-services.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.application-services.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.domain" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.domain.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.domain.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-configuration" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-configuration.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-configuration.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-launcher" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-launcher.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="flex-force.spring-launcher.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.adapter-rest-api" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.adapter-rest-api.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.adapter-rest-api.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-contracts" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-contracts.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-contracts.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-services" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-services.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.application-services.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.domain" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.domain.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.domain.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-configuration" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-configuration.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-configuration.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-launcher" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-launcher.main" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+      <module name="spring-app.spring-launcher.test" options="-Xlint:none -Xdoclint:none -nowarn -parameters" />
+    </option>
+  </component>
+</project>
