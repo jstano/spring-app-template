@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-  api("com.stano:platform-types")
+  api("com.stano:msp-types")
   compileOnly("com.fasterxml.jackson.core:jackson-annotations")
 }

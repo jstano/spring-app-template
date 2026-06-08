@@ -22,7 +22,7 @@ buildscript {
 
    dependencies {
       classpath("com.stano:gradle-plugins-bom:${properties["gradlePluginsVersion"]}")
-      classpath("com.stano:platform-spring-boot-gradle-plugin:${properties["javaPlatformVersion"]}")
+      classpath("com.stano:msp-spring-boot-gradle-plugin:${properties["mspVersion"]}")
    }
 }
 

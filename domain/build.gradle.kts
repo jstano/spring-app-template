@@ -3,8 +3,8 @@ plugins {
 }
 
 dependencies {
-  api("com.stano:platform-spring-data")
-  api("com.stano:platform-types")
+  api("com.stano:msp-domain-jpa-starter")
+  api("com.stano:msp-types")
 
-  testImplementation("com.stano:platform-spring-data-test")
+  testImplementation("com.stano:msp-domain-jpa-test-starter")
 }

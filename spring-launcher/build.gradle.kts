@@ -8,9 +8,7 @@ dependencies {
   implementation(project(":application-services"))
   implementation(project(":spring-configuration"))
 
-  implementation("com.stano:platform-jackson")
-  implementation("com.stano:platform-logging")
-  implementation("com.stano:platform-spring-data")
+  implementation("com.stano:msp-spring-boot-application")
 
-  testImplementation("com.stano:platform-spring-data-test")
+  testImplementation("com.stano:msp-domain-jpa-test-starter")
 }
