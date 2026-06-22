@@ -5,8 +5,7 @@
 ## What Belongs Here
 - Use-case orchestration services (one service class per aggregate root)
 - Transaction boundary definitions
-- Domain entity → DTO mapping logic
-- Repository interface definitions (ports)
+- Domain entity → DTO mapping logic (MapStruct mapper interfaces)
 
 ## Layer Boundary
 - May import: `domain`, `application-contracts`
@@ -18,6 +17,14 @@
 - Annotate public methods with `@Transactional` (read-only queries get `@Transactional(readOnly = true)`)
 - Map domain entities to `application-contracts` DTOs here — not in adapters or domain
 - One service class per aggregate root; keep methods focused on a single use case
+- Define mappers as interfaces annotated with `@Mapper(componentModel = "spring")`; MapStruct generates the implementation:
+  ```java
+  @Mapper(componentModel = "spring")
+  public interface PersonResponseMapper {
+    PersonResponse toResponse(Person person);
+  }
+  ```
+- Repository interfaces are defined in `domain` — inject them here as constructor parameters
 
 ## Testing
 - Use the real MapStruct-generated mapper implementation (e.g. `new PersonResponseMapperImpl()`) in service tests — never mock mappers

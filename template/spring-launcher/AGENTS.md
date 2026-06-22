@@ -4,6 +4,8 @@
 
 ## What Belongs Here
 - Main class (`@SpringBootApplication`) — rename from template default
+- `SecurityConfig` — `@Configuration` class with `@Bean Customizer<HttpSecurity>` for route-level access rules
+- Implementations of `spring-configuration` interfaces (e.g., `ApplicationSettingsImpl`)
 - `SeedDataLoader` — `CommandLineRunner` bean for loading demo/seed data on startup (customize for your domain)
 - `UuidGenerator` — factory for generating UUIDv7 primary keys
 - Exception-to-HTTP-status mapping (`@ControllerAdvice`)

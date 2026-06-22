@@ -24,13 +24,14 @@ This is a monolithic application using hexagonal (ports & adapters) architecture
 
 ### Package Naming
 - Root: `{{ group_id }}.{{ app_package }}`
-- Second level: entity aggregate name (e.g., `person`, `order`)
-- Third level (optional): layer/concern (e.g., `api`, `service`, `repository`)
+- Second level (in each module): module identifier (e.g., `domain`, `rest_api`, `application_services`, `application_contracts`)
+- Third level: entity aggregate name (e.g., `person`, `order`)
 
 Examples:
-- `{{ group_id }}.{{ app_package }}.person.api` — REST controller for Person
-- `{{ group_id }}.{{ app_package }}.person` — domain entity and value objects
-- `{{ group_id }}.{{ app_package }}.person.service` — application service
+- `{{ group_id }}.{{ app_package }}.rest_api.person` — REST controller for Person
+- `{{ group_id }}.{{ app_package }}.domain.person` — domain entity and value objects
+- `{{ group_id }}.{{ app_package }}.application_services.person` — application service
+- `{{ group_id }}.{{ app_package }}.application_contracts.person` — DTOs and service interfaces
 
 ### Naming Conventions
 - Classes/interfaces/records: `PascalCase`
@@ -78,7 +79,7 @@ Examples:
 ### REST Adapter Testing (adapter-rest-api)
 
 - Use `@WebMvcTest` to test controllers in isolation — loads only the web layer without full app context
-- Mock all service dependencies via `@MockBean`
+- Mock all service dependencies via `@MockitoBean` (not the deprecated `@MockBean`)
 - Use `MockMvc` for HTTP testing: `mockMvc.perform(post(...))`, `andExpect(status().isOk())`, etc.
 - Test request validation (`@Valid` constraints), response mapping, and HTTP semantics — not business logic
 - Example:
@@ -86,7 +87,7 @@ Examples:
   @WebMvcTest(PersonController.class)
   class PersonControllerTest {
     @Autowired private MockMvc mockMvc;
-    @MockBean private PersonCrudService service;
+    @MockitoBean private PersonCrudService service;
 
     @Test
     void creatingAPersonWithValidDataShouldReturn201() throws Exception {
