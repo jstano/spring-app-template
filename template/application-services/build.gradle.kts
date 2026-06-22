@@ -1,0 +1,12 @@
+plugins {
+  id("com.stano.java")
+}
+
+dependencies {
+  implementation(project(":application-contracts"))
+  implementation(project(":domain"))
+
+  implementation("com.stano:msp-application-services-starter")
+
+  testImplementation("com.stano:msp-spring-test-starter")
+}

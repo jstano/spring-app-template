@@ -1,0 +1,50 @@
+_templates_suffix: ""
+_subdirectory: template
+
+project_name:
+  type: str
+  help: "Project name, kebab-case (e.g. my-service). Used as the Gradle root project name."
+  validator: >-
+    {% if not (project_name | regex_search('^[a-z][a-z0-9-]*$')) %}
+    Must be lowercase letters, digits, and hyphens, starting with a letter.
+    {% endif %}
+
+group_id:
+  type: str
+  help: "Maven group ID / Java base package (e.g. com.example)"
+  validator: >-
+    {% if not (group_id | regex_search('^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$')) %}
+    Must be a valid reverse-domain package (e.g. com.example).
+    {% endif %}
+
+app_package:
+  type: str
+  help: "Application sub-package, one lowercase word (e.g. myapp)"
+  validator: >-
+    {% if not (app_package | regex_search('^[a-z][a-z0-9]*$')) %}
+    Must be a single lowercase word with no dots or hyphens.
+    {% endif %}
+
+db_name:
+  type: str
+  help: "PostgreSQL database name"
+  default: "{{ project_name | replace('-', '_') }}"
+
+db_username:
+  type: str
+  help: "PostgreSQL username"
+  default: "postgres"
+
+db_password:
+  type: str
+  help: "PostgreSQL password"
+  secret: true
+  default: ""
+
+jwt_issuer_uri:
+  type: str
+  help: "JWT issuer URI"
+  default: "http://localhost:8080/realms/master"
+
+_tasks:
+  - "python3 {{ _copier_conf.src_path }}/rename_pkg.py {{ _copier_conf.dst_path }} {{ group_id }} {{ app_package }}"
