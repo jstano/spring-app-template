@@ -1,6 +1,7 @@
 plugins {
   id("com.stano.java")
   id("com.stano.spring-boot")
+  id("com.stano.docker")
 }
 
 dependencies {

@@ -3,6 +3,7 @@
 .claude/settings.local.json
 .DS_Store
 build/
+.env-local
 
 # Eclipse
 .classpath

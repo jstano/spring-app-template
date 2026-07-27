@@ -1,7 +1,14 @@
 rootProject.name = "{{ project_name }}"
 
+pluginManagement {
+  repositories {
+    mavenLocal()
+    gradlePluginPortal()
+  }
+}
+
 plugins {
-  id("com.stano.settings") version "0.1.6"
+  id("com.stano.settings") version "0.1.8"
 }
 
 include("adapter-rest-api")
