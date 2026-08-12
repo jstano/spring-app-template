@@ -14,14 +14,16 @@ A [Copier](https://copier.readthedocs.io/) template that scaffolds a production-
 Generate a new project from GitHub:
 
 ```bash
-copier copy gh:jstano/spring-app-template <output-dir>
+copier copy --trust gh:jstano/spring-app-template <output-dir>
 ```
 
 Or from a local clone of this repo:
 
 ```bash
-copier copy /path/to/spring-app-template <output-dir>
+copier copy --trust /path/to/spring-app-template <output-dir>
 ```
+
+`--trust` is required: this template runs a post-generation task (`rename_pkg.py`, see below) to rename the `__pkg__` placeholder directories, and Copier treats `_tasks` as a potentially unsafe feature that it won't run without `--trust`. Without it, the copy completes silently but every package directory is left named `__pkg__`.
 
 Copier will prompt you for the variables below, then automatically rename package directories to match your chosen group ID and package name.
 
