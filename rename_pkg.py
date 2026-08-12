@@ -5,13 +5,18 @@ from pathlib import Path
 
 
 def main():
-    if len(sys.argv) != 4:
-        print(f"Usage: {sys.argv[0]} <dst_path> <group_id> <app_package>", file=sys.stderr)
+    if len(sys.argv) != 3:
+        print(f"Usage: {sys.argv[0]} <group_id> <app_package>", file=sys.stderr)
         sys.exit(1)
 
-    dst_path = Path(sys.argv[1])
-    group_id = sys.argv[2]
-    app_package = sys.argv[3]
+    group_id = sys.argv[1]
+    app_package = sys.argv[2]
+
+    # Copier runs tasks with the destination path as the current working
+    # directory, so operate on "." rather than taking dst_path as an
+    # argument (which may be relative, and would then be resolved against
+    # a cwd that's already inside the destination — a nonexistent path).
+    dst_path = Path(".")
 
     pkg_path = group_id.replace(".", "/") + "/" + app_package
 

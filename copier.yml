@@ -48,4 +48,4 @@ jwt_issuer_uri:
 
 _tasks:
   - >-
-    python3 "{{ _copier_conf.src_path }}/rename_pkg.py" "{{ _copier_conf.dst_path }}" "{{ group_id }}" "{{ app_package }}"
+    python3 "{{ _copier_conf.src_path }}/rename_pkg.py" "{{ group_id }}" "{{ app_package }}"
