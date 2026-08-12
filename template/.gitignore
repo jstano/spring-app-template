@@ -1,6 +1,5 @@
 .gradle/
 .idea/
-.claude/settings.local.json
 .DS_Store
 build/
 .env-local
@@ -11,3 +10,19 @@ build/
 .project
 .settings/
 bin/
+
+# VS Code
+.vscode/
+
+# Claude Code (local runtime state)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks.json
+.claude/routines/.state/
+.claude/worktrees/
+.claude/checkpoints/
+.claude/mailbox/
+.claude/agent-registry.json
+.claude/agent-memory-local
+.claude/first-run
+.claude/assistant-daemon-state.json
