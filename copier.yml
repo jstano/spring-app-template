@@ -49,3 +49,4 @@ jwt_issuer_uri:
 _tasks:
   - >-
     python3 "{{ _copier_conf.src_path }}/rename_pkg.py" "{{ group_id }}" "{{ app_package }}"
+  - "./gradlew clean build spotlessApply --write-locks"

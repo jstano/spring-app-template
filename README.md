@@ -23,9 +23,11 @@ Or from a local clone of this repo:
 copier copy --trust /path/to/spring-app-template <output-dir>
 ```
 
-`--trust` is required: this template runs a post-generation task (`rename_pkg.py`, see below) to rename the `__pkg__` placeholder directories, and Copier treats `_tasks` as a potentially unsafe feature that it won't run without `--trust`. Without it, the copy completes silently but every package directory is left named `__pkg__`.
+`--trust` is required: this template runs post-generation tasks (see below) to rename the `__pkg__` placeholder directories and build the generated project, and Copier treats `_tasks` as a potentially unsafe feature that it won't run without `--trust`. Without it, the copy completes silently, every package directory is left named `__pkg__`, and the project is never built.
 
-Copier will prompt you for the variables below, then automatically rename package directories to match your chosen group ID and package name.
+Copier will prompt you for the variables below, then automatically:
+1. Rename package directories to match your chosen group ID and package name (`rename_pkg.py`).
+2. Run `./gradlew clean build spotlessApply --write-locks` in the generated project to verify it builds, apply Spotless formatting, and write Gradle dependency locks.
 
 ## Template Variables
 
