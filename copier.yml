@@ -48,5 +48,8 @@ jwt_issuer_uri:
 
 _tasks:
   - >-
-    python3 "{{ _copier_conf.src_path }}/rename_pkg.py" "{{ group_id }}" "{{ app_package }}"
-  - "./gradlew clean build spotlessApply --write-locks"
+    "{{ _copier_python }}" "{{ _copier_conf.src_path }}/rename_pkg.py" "{{ group_id }}" "{{ app_package }}"
+  - command: "./gradlew clean build spotlessApply --write-locks"
+    when: "{{ _copier_conf.os != 'windows' }}"
+  - command: "gradlew.bat clean build spotlessApply --write-locks"
+    when: "{{ _copier_conf.os == 'windows' }}"
