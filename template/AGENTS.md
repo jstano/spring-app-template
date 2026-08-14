@@ -11,13 +11,25 @@ This is a monolithic application using hexagonal (ports & adapters) architecture
 - No adapter imports another adapter. No domain imports application or adapters. No layer above skips intermediaries.
 - All HTTP types stay in `rest-adapter`. All domain types stay in `domain`. Shared contracts live in `application-contracts`.
 
+## AI Working Directory (`.ai/`)
+
+Working files for AI agents live here, separate from application source. It is not runtime code.
+
+- `.ai/context/` — Per-feature or per-task context docs (notes on an in-flight feature, a module's quirks, decisions scoped to one area). Supplements the project-wide rules in this file — check for a relevant file here before starting work that touches an area it covers.
+- `.ai/plans/` — Implementation plans. Before starting non-trivial work (multi-file changes, new features), write a short plan here describing the approach, then implement against it.
+- `.ai/research/` — Findings from exploration/research tasks (investigating a library, tracing a bug, evaluating an approach). Record findings here so they persist across sessions instead of being lost.
+- `.ai/scratch/` — Disposable working files (drafts, temp notes, exploratory output). Gitignored — never rely on anything here surviving or being reviewed.
+
+Rules:
+- `.ai/context/`, `.ai/plans/`, and `.ai/research/` are committed to git — write for the next agent, not just yourself, and keep them current or delete them when stale.
+- Never put source code, config, or anything the application depends on inside `.ai/` — it's documentation and planning only.
+
 ## Tech Stack
 
 - Java 21, Spring Boot 4.x
 - **Always use `jakarta.*` — never `javax.*`** (Spring Boot 4 requires Jakarta EE 11)
 - Gradle Kotlin DSL (`build.gradle.kts`)
 - PostgreSQL 18, Flyway for schema migrations
-- `spring.jpa.hibernate.ddl-auto=validate` (never use `create`, `update`, or `create-drop`)
 - Virtual threads enabled (`spring.threads.virtual.enabled=true`)
 
 ## Coding Conventions
@@ -76,29 +88,6 @@ Examples:
 - **Test frameworks:** JUnit 5 + Mockito for unit tests; integration tests use real database when testing persistence
 - **Never use deprecated APIs** — use `@MockitoBean` (Spring Boot 4.x), not the deprecated `@MockBean`
 
-### REST Adapter Testing (adapter-rest-api)
-
-- Use `@WebMvcTest` to test controllers in isolation — loads only the web layer without full app context
-- Mock all service dependencies via `@MockitoBean` (not the deprecated `@MockBean`)
-- Use `MockMvc` for HTTP testing: `mockMvc.perform(post(...))`, `andExpect(status().isOk())`, etc.
-- Test request validation (`@Valid` constraints), response mapping, and HTTP semantics — not business logic
-- Example:
-  ```java
-  @WebMvcTest(PersonController.class)
-  class PersonControllerTest {
-    @Autowired private MockMvc mockMvc;
-    @MockitoBean private PersonCrudService service;
-
-    @Test
-    void creatingAPersonWithValidDataShouldReturn201() throws Exception {
-      mockMvc.perform(post("/persons")
-        .contentType(APPLICATION_JSON)
-        .content("""{"name":"Alice"}"""))
-        .andExpect(status().isCreated());
-    }
-  }
-  ```
-
 ## Common Gradle Commands
 
 ```bash
@@ -119,12 +108,5 @@ Examples:
 # Dependency Management
 ./gradlew dependencies      # Show dependency tree
 ./gradlew dependencyUpdates # Check for outdated dependencies (if plugin enabled)
+./gradlew --write-locks     # Regenerate dependency lock files after changing dependencies
 ```
-
-## Anti-Patterns
-
-- Never use `ddl-auto=create`, `update`, or `create-drop`
-- Never hardcode credentials — use environment variables or `.properties` files
-- Never mix concerns: no business logic in controllers, no HTTP types in domain, no SQL in services
-- Never skip `@Valid` on incoming REST request bodies
-- Never create standalone UUID wrappers — use `EntityId` and `AbstractEntity`

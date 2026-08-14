@@ -1,5 +1,6 @@
 plugins {
   id("com.stano.java")
+  id("com.stano.schema")
   id("com.stano.spring-boot")
 }
 
